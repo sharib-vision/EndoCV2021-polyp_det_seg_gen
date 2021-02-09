@@ -35,11 +35,6 @@ if __name__ == '__main__':
     pred_bbs =  coco2bbox(args.jsonPred, bb_type=BBType.DETECTED)
     #--------
     
-    # not required
-    gt_bbs = [bb for bb in gt_bbs if bb.get_class_id() == 'polyp']
-    pred_bbs = [bb for bb in pred_bbs if bb.get_class_id() == 'polyp']
-    
-    
     metric_values = coco_evaluator.get_coco_summary(gt_bbs, pred_bbs)
     
     print('Metric values for EndoCV2021 detection task:', metric_values)
