@@ -18,7 +18,7 @@ This repo is designated for the evaluation of methods developed in [EndoCV2021](
     
 **Evaluating generalisability in detection methods:**
 
-- TODO
+- [Evaluation for testing generalisability between two detection results on multiple datasets](https://github.com/sharibox/EndoCV2021-polyp_det_seg_gen/blob/main/compute_det_gen.py)
 
 **Evaluating segmentation methods:**
 
