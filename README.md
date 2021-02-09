@@ -1,7 +1,7 @@
 # EndoCV2021-polyp_det_seg_gen
 
 ## About:
-This repo is designated to evaluation of methods developed for [EndoCV2021](https://endocv2021.grand-challenge.org) (3rd International Endoscopy Computer Vision Challenge and Workshop in conjuenction to IEEE ISBI 2021) challenge, "Addressing generalisability in polyp detection and segmentation". Several tools that may help participants to assess their method are provided. 
+This repo is designated for the evaluation of methods developed in [EndoCV2021](https://endocv2021.grand-challenge.org) (3rd International Endoscopy Computer Vision Challenge and Workshop in conjuenction to IEEE ISBI 2021) challenge, "Addressing generalisability in polyp detection and segmentation". Several tools that may help participants to assess their methods are provided. 
 
 ## Where to find what?
 
