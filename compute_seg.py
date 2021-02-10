@@ -7,7 +7,10 @@ Created on Tue Feb  9 14:12:16 2021
 
 Disclaimer: Most codes are imported from the previous EndoCV challenges!!!
 
+Requires:
 !pip install --upgrade scikit-learn
+!pip install numba==0.49.1
+!pip install hausdorff
 """
 
 # TODO: Add distance metrics for evaluation!!!
@@ -81,6 +84,9 @@ if __name__ == '__main__':
     from misc import EndoCV_misc 
     import cv2
     from metrics_seg import get_confusion_matrix_elements, jac_score, dice_score, F2, precision, recall
+    
+    # ---> requires: !pip install hausdorff (first install !pip install numba==0.49.1)
+    from hausdorff import hausdorff_distance
 
     classTypes=['polyp']
     args = get_args()
@@ -115,6 +121,7 @@ if __name__ == '__main__':
         PPV_scores = []
         Rec_scores = []
         acc_scores = []
+        Hfd_score = []
         
         for jj in range(len(pred_mask_files))[:]:
             
@@ -129,6 +136,8 @@ if __name__ == '__main__':
             tn, fp, fn, tp = get_confusion_matrix_elements(gt_mask.flatten().tolist(), pred_mask.flatten().tolist())
             overall_acc = (tp+tn)/(tp+tn+fp+fn)
             
+            Hf = hausdorff_distance(gt_mask, pred_mask, distance='euclidean')
+            
             jac_set = np.hstack([jac_score(gt_mask,pred_mask)])
             dice_set = np.hstack([dice_score(gt_mask,pred_mask)])
             f2_set = np.hstack([F2(gt_mask,pred_mask)])
@@ -142,6 +151,7 @@ if __name__ == '__main__':
             PPV_scores.append(PPV_set)
             Rec_scores.append(Rec_set)
             acc_scores.append(acc)
+            Hfd_score.append(Hf)
             
         
         jac_scores = np.vstack(jac_scores)
@@ -160,6 +170,8 @@ if __name__ == '__main__':
         print('PPV: ', PPV_scores.mean(axis=0)), '+', PPV_scores.mean(axis=0).mean()
         print('Rec: ', Rec_scores.mean(axis=0)), '+', Rec_scores.mean(axis=0).mean()
         print('Acc: ', acc_scores.mean(axis=0)), '+', acc_scores.mean(axis=0).mean()
+        # Normalise
+        print('Hdf: ', np.mean(Hfd_score)/np.max(Hfd_score)), '+', np.mean(Hfd_score)/np.max(Hfd_score)
         print('++++')
             
         all_scores = np.vstack([jac_scores.mean(axis=0),
@@ -167,13 +179,14 @@ if __name__ == '__main__':
                                 f2_scores.mean(axis=0),
                                 PPV_scores.mean(axis=0),
                                 Rec_scores.mean(axis=0),
-                                acc_scores.mean(axis=0)])
+                                acc_scores.mean(axis=0),
+                                np.mean(Hfd_score)/np.max(Hfd_score)])
     
         all_scores = np.hstack([np.hstack(['jac',
                                            'dice',
                                            'F2',
                                            'PPV',
-                                           'Rec', 'Acc'])[:,None], all_scores])
+                                           'Rec', 'Acc', 'Hfd'])[:,None], all_scores])
         
         
         # final scores are wrapped in json file
@@ -196,6 +209,9 @@ if __name__ == '__main__':
                     "OverallAcc":{
                     "value": (np.mean(acc_scores)),
                     },
+                    "hausdorff_distance":{
+                    "value": (np.mean(Hfd_score/np.max(Hfd_score))),
+                    },
                     "dice_std":{
                     "value": (np.std(dice_scores)),
                     },
@@ -213,7 +229,10 @@ if __name__ == '__main__':
                     },                   
                     "acc_std":{
                     "value": (np.std(acc_scores)),
-                    },             
+                    },   
+                    "hdf_std":{
+                    "value": (np.std(Hfd_score/np.max(Hfd_score))),
+                    }, 
                 }
         }   
         
