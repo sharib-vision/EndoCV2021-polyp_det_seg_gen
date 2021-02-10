@@ -26,4 +26,4 @@ This repo is designated for the evaluation of methods developed in [EndoCV2021](
 
 **Evaluating generalisability in segmentation methods:**
 
-- TODO
+- [Evaluate method generalisability](https://github.com/sharibox/EndoCV2021-polyp_det_seg_gen/blob/main/compute_seg_gen.py)
