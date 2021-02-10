@@ -87,7 +87,7 @@ if __name__ == '__main__':
     
     if exists_detect and exists_generalization:
         my_dictionary = {
-            "EndoCV2021":{
+            "EndoCV2021_det_seg":{
                     "mAP_g":{
                      "value":(mAP_g_test) 
                     },

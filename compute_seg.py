@@ -190,7 +190,7 @@ if __name__ == '__main__':
         
         
         # final scores are wrapped in json file
-        my_dictionary = {"EndoCV2021":{
+        my_dictionary = {"EndoCV2021_seg":{
                     "dice":{
                     "value":  ( dice_scores.mean(axis=0)[0]) 
                     },
