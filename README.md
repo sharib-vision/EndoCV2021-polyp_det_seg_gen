@@ -22,7 +22,7 @@ This repo is designated for the evaluation of methods developed in [EndoCV2021](
 
 **Evaluating segmentation methods:**
 
-- TODO
+- [Evaluate segmentation methods for each test set separately](https://github.com/sharibox/EndoCV2021-polyp_det_seg_gen/blob/main/compute_seg.py)
 
 **Evaluating generalisability in segmentation methods:**
 
