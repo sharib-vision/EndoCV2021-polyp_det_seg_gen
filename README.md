@@ -30,7 +30,7 @@ This repo is designated for the evaluation of methods developed in [EndoCV2021](
 
 **References (details on generalisation tests can be found here):**
 
-*Please cite these research*
+*Please cite these papers*
 
 [1] Ali, S., Zhou, F., Braden, B. et al. An objective comparison of detection and segmentation algorithms for artefacts in clinical endoscopy. Sci Rep 10, 2748 (2020). https://doi.org/10.1038/s41598-020-59413-5
 
