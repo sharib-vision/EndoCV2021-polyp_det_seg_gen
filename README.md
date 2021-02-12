@@ -29,4 +29,7 @@ This repo is designated for the evaluation of methods developed in [EndoCV2021](
 - [Evaluate method generalisability](https://github.com/sharibox/EndoCV2021-polyp_det_seg_gen/blob/main/compute_seg_gen.py)
 
 **References (details on generalisation tests can be found here, please cite these research if you use this code repo):**
+
 [1] Ali, S., Zhou, F., Braden, B. et al. An objective comparison of detection and segmentation algorithms for artefacts in clinical endoscopy. Sci Rep 10, 2748 (2020). https://doi.org/10.1038/s41598-020-59413-5
+
+[2] Ali et al. Deep learning for detection and segmentation of artefact and disease instances in gastrointestinal endoscopy. Medical Image Analysis 2021 (in press).
