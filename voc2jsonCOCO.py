@@ -72,7 +72,7 @@ def images_annotations_info(args):
     root_path = args.root_path 
     dataset = {'categories': [], 'annotations': [], 'images': []}
      
-    with open(os.path.join(root_path, 'obj.names')) as f:
+    with open( 'obj.names') as f:
         classes = f.read().strip().split()
         
     for i, cls in enumerate(classes, 1):
@@ -113,8 +113,15 @@ def images_annotations_info(args):
                 height_box = max(0, float(y2)- float(y1))
                 
             except ValueError:
-                error_msg = "Error: File " + txt_file + " in the wrong format.\n"
-                EndoCV_misc.error(error_msg)
+                # error_msg = "Error: File " + txt_file + " in the wrong format.\n"
+                # EndoCV_misc.error(error_msg)
+                if args.type == 'GT':
+                    cls_id, score, x1, y1, x2, y2 = ('nopolyp', [], '0', '0', '0', '0')
+                else: 
+                    cls_id, score, x1, y1, x2, y2 = ('nopolyp', '0', '0', '0', '0', '0')
+                
+                width_box = max(0, float(x2) - float(x1))
+                height_box = max(0, float(y2)- float(y1))
                 
             annotations.append(create_annotation_coco_format(float(x1), float(y1), width_box, height_box, score, count, 1, annot_count, args))
             
@@ -125,9 +132,9 @@ def images_annotations_info(args):
     
  
 def get_args():
-    parser = argparse.ArgumentParser('Yolo format annotations to COCO dataset format')
-    parser.add_argument('--root_path', default='/Volumes/myPC/EndoCV2021/EndoCV2021-polyp_det_seg_gen/example/', type=str, help='Absolute path for \'train.txt\' or \'test.txt\'')
-    parser.add_argument('--txtFiles_path', default='/Volumes/myPC/EndoCV2021/EndoCV2021-polyp_det_seg_gen/example/GT/', type=str, help='Absolute')
+    parser = argparse.ArgumentParser('VOC format annotations to COCO dataset format')
+    parser.add_argument('--root_path', default='/media/sharib/development/EndoCV2021-test_analysis/endocv2021_inferenceData/DATA3_renamed/', type=str, help='Absolute path for \'train.txt\' or \'test.txt\'')
+    parser.add_argument('--txtFiles_path', default='/media/sharib/development/EndoCV2021-test_analysis/endocv2021_inferenceData/DATA3_renamed/bbox_DATA3_renamed/', type=str, help='Absolute')
     parser.add_argument('--type', default='GT', type=str, help='Name the output json file')
     args = parser.parse_args()
     return args
@@ -143,7 +150,7 @@ def get_args():
 
 if __name__ == '__main__':
     args = get_args()
-    phase = 'train'
+    phase = 'Data3_GT_det'
     classes = ['polyp']
  
     folder = os.path.join(args.root_path, 'annotations')
