@@ -120,8 +120,8 @@ if __name__ == '__main__':
             have polyp.
         2) What format should I save the predictions.
             --> you can save it in the tif or jpg format. 
-        3) Can I visualize the results or copy them in to see?
-            --> No, you are not allowed to do this. This is against challenge rules!!!
+        3) Can I visualize the data or copy them in my local computer to see?
+            --> No, you are not allowed to do this. This is against challenge rules. No test data can be copied or visualised to get insight. Please treat this as unseen image.!!!
         4) Can I use my own test code?
             --> Yes, but please make sure that you follow the rules. Any visulization or copy of test data is against the challenge rules. We make sure that the 
             competition is fair and results are replicative.
