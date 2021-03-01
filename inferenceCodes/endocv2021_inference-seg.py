@@ -189,7 +189,7 @@ if __name__ == '__main__':
             pred = (pred).astype(np.uint8)
             
             img_mask=skimage.transform.resize(pred, (size[0], size[1]), anti_aliasing=True) 
-            imsave(saveDir +'/'+ filename +'_mask.tif',(img_mask*255.0).astype('uint8'))
+            imsave(saveDir +'/'+ filename +'_mask.jpg',(img_mask*255.0).astype('uint8'))
             
             
             file.write('%s -----> %s \n' % 
