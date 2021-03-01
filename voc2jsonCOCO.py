@@ -108,13 +108,6 @@ def images_annotations_info(args):
                     cls_id, x1, y1, x2, y2 = line.split()
                 else:
                     cls_id, score, x1, y1, x2, y2 = line.split()
-<<<<<<< HEAD
-   
-=======
-                    # cls_id, x1, y1, x2, y2 = line.split()
-                    # score = '90'
-                    
->>>>>>> 8f716997ddf82c62ac6a8612647e5643122a4c3e
                 
                 width_box = max(0, float(x2) - float(x1))
                 height_box = max(0, float(y2)- float(y1))
@@ -122,17 +115,13 @@ def images_annotations_info(args):
             except ValueError:
                 # error_msg = "Error: File " + txt_file + " in the wrong format.\n"
                 # EndoCV_misc.error(error_msg)
+                # handle masks that are zero
                 if args.type == 'GT':
-<<<<<<< HEAD
                     cls_id, x1, y1, x2, y2 = ('polyp', '-1', '-1', '-1', '-1')
                 else: 
                     cls_id, x1, y1, x2, y2 = ('polyp', '-1', '-1', '-1', '-1')
-                    score = 0.9
-=======
-                    cls_id, score, x1, y1, x2, y2 = ('nopolyp', [], '0', '0', '0', '0')
-                else: 
-                    cls_id, score, x1, y1, x2, y2 = ('nopolyp', '0', '0', '0', '0', '0')
->>>>>>> 8f716997ddf82c62ac6a8612647e5643122a4c3e
+                    score = 1.0
+
                 
                 width_box = max(0, float(x2) - float(x1))
                 height_box = max(0, float(y2)- float(y1))
@@ -155,15 +144,9 @@ def images_annotations_info(args):
 
 def get_args():
     parser = argparse.ArgumentParser('VOC format annotations to COCO dataset format')
-<<<<<<< HEAD
-    parser.add_argument('--root_path', default='/Volumes/myPC/EndoCV2021-test_analysis/endocv2021-test-noCopyAllowed-v1/EndoCV_DATA2', type=str, help='Absolute path for \'train.txt\' or \'test.txt\'')
-    parser.add_argument('--txtFiles_path', default='/Volumes/myPC/EndoCV2021-test_analysis/codes-det/EndoCV2021/detection/EndoCV_DATA2_pred', type=str, help='Absolute')
-    parser.add_argument('--type', default='GT', type=str, help='Name the output json file')
-=======
     parser.add_argument('--root_path', default='/media/sharib/development/EndoCV2021-test_analysis/endocv2021-test-noCopyAllowed-v1/EndoCV_DATA1', type=str, help='Absolute path for \'train.txt\' or \'test.txt\'')
     parser.add_argument('--txtFiles_path', default='/media/sharib/development/EndoCV2021-test_analysis/codes-det/EndoCV2021/detection/EndoCV_DATA1_pred', type=str, help='Absolute')
     parser.add_argument('--type', default='pred', type=str, help='Name the output json file, your voc files must have polyp, score, x1, y1, x2, y2 in voc format')
->>>>>>> 8f716997ddf82c62ac6a8612647e5643122a4c3e
     args = parser.parse_args()
     return args
 
@@ -178,11 +161,7 @@ def get_args():
 
 if __name__ == '__main__':
     args = get_args()
-<<<<<<< HEAD
-    phase = 'EndoCV_DATA2_GT'
-=======
     phase = 'EndoCV_DATA1'
->>>>>>> 8f716997ddf82c62ac6a8612647e5643122a4c3e
     classes = ['polyp']
  
     # folder = os.path.join(args.root_path, 'annotations')
