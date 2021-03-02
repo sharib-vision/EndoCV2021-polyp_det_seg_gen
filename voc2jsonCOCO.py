@@ -147,6 +147,7 @@ def get_args():
     parser.add_argument('--root_path', default='/media/sharib/development/EndoCV2021-test_analysis/endocv2021-test-noCopyAllowed-v1/EndoCV_DATA1', type=str, help='Absolute path for \'train.txt\' or \'test.txt\'')
     parser.add_argument('--txtFiles_path', default='/media/sharib/development/EndoCV2021-test_analysis/codes-det/EndoCV2021/detection/EndoCV_DATA1_pred', type=str, help='Absolute')
     parser.add_argument('--type', default='pred', type=str, help='Name the output json file, your voc files must have polyp, score, x1, y1, x2, y2 in voc format')
+    parser.add_argument('--phase', default='EndoCV_DATA1', type=str, help='just put the data you are infering for...{EndoCV_DATA1, EndoCV_DATA2, EndoCV_DATA3}')
     args = parser.parse_args()
     return args
 
@@ -161,7 +162,7 @@ def get_args():
 
 if __name__ == '__main__':
     args = get_args()
-    phase = 'EndoCV_DATA1'
+    phase = args.phase
     classes = ['polyp']
  
     # folder = os.path.join(args.root_path, 'annotations')
