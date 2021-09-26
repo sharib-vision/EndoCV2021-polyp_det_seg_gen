@@ -210,7 +210,7 @@ if __name__ == '__main__':
                     "value": (np.mean(acc_scores)),
                     },
                     "hausdorff_distance":{
-                    "value": (np.mean(Hfd_score/np.max(Hfd_score))),
+                    "value": (np.mean(Hfd_score)/np.max(Hfd_score)),
                     },
                     "dice_std":{
                     "value": (np.std(dice_scores)),
