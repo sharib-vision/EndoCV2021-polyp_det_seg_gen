@@ -212,6 +212,9 @@ if __name__ == '__main__':
                     "hausdorff_distance":{
                     "value": (np.mean(Hfd_score)/np.max(Hfd_score)),
                     },
+                    "hausdorff_distance_nonNorm":{
+                    "value": (np.mean(Hfd_score)),
+                    },
                     "dice_std":{
                     "value": (np.std(dice_scores)),
                     },
@@ -232,6 +235,9 @@ if __name__ == '__main__':
                     },   
                     "hdf_std":{
                     "value": (np.std(Hfd_score/np.max(Hfd_score))),
+                    }, 
+                    "hdf_std_noNorm":{
+                    "value": (np.std(Hfd_score)),
                     }, 
                 }
         }   
