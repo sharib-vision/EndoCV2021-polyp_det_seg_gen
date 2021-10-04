@@ -256,14 +256,22 @@ def _group_detections(dt, gt):
 
 def _get_area(a):
     """ COCO does not consider the outer edge as included in the bbox """
-    x, y, x2, y2 = a.get_absolute_bounding_box(format=BBFormat.XYX2Y2)
+    x, y, x2, y2 = a.get_absolute_bounding_box(format=BBFormat.XYWH)
+    # convert to xyx2y2 format
+    x2 = x + x2
+    y2 = y + y2
     return (x2 - x) * (y2 - y)
 
 
 def _jaccard(a, b):
-    xa, ya, x2a, y2a = a.get_absolute_bounding_box(format=BBFormat.XYX2Y2)
-    xb, yb, x2b, y2b = b.get_absolute_bounding_box(format=BBFormat.XYX2Y2)
-
+    xa, ya, x2a, y2a = a.get_absolute_bounding_box(format=BBFormat.XYWH)
+    xb, yb, x2b, y2b = b.get_absolute_bounding_box(format=BBFormat.XYWH)
+    x2a = x2a + xa
+    x2b = x2b + xb
+    
+    y2a = y2a + ya
+    y2b = y2b + yb
+    
     # innermost left x
     xi = max(xa, xb)
     # innermost right x
@@ -276,7 +284,7 @@ def _jaccard(a, b):
     Aa = max(x2a - xa, 0) * max(y2a - ya, 0)
     Ab = max(x2b - xb, 0) * max(y2b - yb, 0)
     Ai = max(x2i - xi, 0) * max(y2i - yi, 0)
-    return Ai / (Aa + Ab - Ai)
+    return Ai / ((Aa + Ab - Ai)+0.00000000000001)
 
 
 def _compute_ious(dt, gt):
