@@ -34,4 +34,6 @@ This repo is designated for the evaluation of methods developed in [EndoCV2021](
 
 [1] Ali, S., Zhou, F., Braden, B. et al. An objective comparison of detection and segmentation algorithms for artefacts in clinical endoscopy. Sci Rep 10, 2748 (2020). https://doi.org/10.1038/s41598-020-59413-5
 
-[2] Ali et al. Deep learning for detection and segmentation of artefact and disease instances in gastrointestinal endoscopy. Medical Image Analysis 2021 (in press).
+[2] Ali et al. Deep learning for detection and segmentation of artefact and disease instances in gastrointestinal endoscopy. Medical Image Analysis 2021.
+
+[3] Ali, S. et al. PolypGen: A multi-center polyp detection and segmentation dataset for generalisability assessment. arXiv 2021. Link: https://arxiv.org/abs/2106.04463
