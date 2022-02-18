@@ -61,7 +61,7 @@ def create_annotation_coco_format(min_x, min_y, width, height, score, image_id, 
             'bbox': bbox,
             'area': area,
             'iscrowd': 0,
-            'category_id': category_id,
+            'category_id': category_id+1,
             'segmentation': [],
             'score': float(score)
         }
