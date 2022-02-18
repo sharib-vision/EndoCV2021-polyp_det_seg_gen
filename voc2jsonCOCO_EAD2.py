@@ -157,7 +157,7 @@ def get_args():
     parser = argparse.ArgumentParser('VOC format annotations to COCO dataset format')
     parser.add_argument('--root_path', default='/media/sharib/development/EndoCV22-DataCuration-January/codes/data/test_set_seenCombined_composite/images_renamed', type=str, help='Absolute path for \'train.txt\' or \'test.txt\'')
     parser.add_argument('--txtFiles_path', default='/media/sharib/development/EndoCV22-DataCuration-January/codes/data/test_set_seenCombined_composite/bbox_', type=str, help='Absolute')
-    parser.add_argument('--type', default='GT', type=str, help='Name the output json file, your voc files must have polyp, score, x1, y1, x2, y2 in voc format')
+    parser.add_argument('--type', default='pred', type=str, help='Name the output json file, your voc files must have polyp, score, x1, y1, x2, y2 in voc format')
     args = parser.parse_args()
     return args
 
