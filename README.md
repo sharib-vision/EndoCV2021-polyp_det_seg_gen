@@ -36,4 +36,4 @@ This repo is designated for the evaluation of methods developed in [EndoCV2021](
 
 [2] Ali et al. Deep learning for detection and segmentation of artefact and disease instances in gastrointestinal endoscopy. Medical Image Analysis 2021.
 
-[3] Ali, S. et al. PolypGen: A multi-center polyp detection and segmentation dataset for generalisability assessment. arXiv 2021. Link: https://arxiv.org/abs/2106.04463
+[3] Ali, S. et al. A multi-centre polyp detection and segmentation dataset for generalisability assessment. Sci Data 10, 75 (2023). https://doi.org/10.1038/s41597-023-01981-y
